@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { Mail, Globe, Linkedin, Sparkles, Rocket, TrendingUp, Users, Zap } from "lucide-react";
 import techgramLogo from "@/assets/techgram-logo.png";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const whyInvest = [
   { icon: Rocket, text: "First-mover in AI-native student OS — no direct competitor" },
@@ -14,6 +15,7 @@ const Slide14CTA = () => {
   return (
     <SlideLayout>
       <div className="flex flex-col items-center justify-center h-full text-center relative aurora-bg">
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15 pointer-events-none" />
         {/* Glowing orbs */}
         <motion.div
           className="absolute w-[800px] h-[800px] rounded-full"

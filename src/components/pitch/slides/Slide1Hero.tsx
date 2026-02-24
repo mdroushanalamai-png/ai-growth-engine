@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { Sparkles } from "lucide-react";
 import techgramLogo from "@/assets/techgram-logo.png";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const floatingBadges = [
   { text: "250M+ Students", x: -420, y: -180 },
@@ -14,6 +15,8 @@ const Slide1Hero = () => {
   return (
     <SlideLayout>
       <div className="flex flex-col items-center justify-center h-full text-center relative aurora-bg">
+        {/* Background image */}
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none" />
         {/* Aurora glow orbs */}
         <motion.div
           className="absolute w-[700px] h-[700px] rounded-full opacity-20"

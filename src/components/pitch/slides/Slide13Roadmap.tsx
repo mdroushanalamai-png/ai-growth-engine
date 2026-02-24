@@ -3,6 +3,7 @@ import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { Rocket, Zap, Globe, Crown, TrendingUp } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip } from "recharts";
+import roadmapBg from "@/assets/roadmap-bg.jpg";
 
 const timeline = [
   { year: "Y1", title: "Foundation", desc: "MVP launch, 50K users, PMF", icon: Rocket },
@@ -23,7 +24,8 @@ const growthData = [
 const Slide13Roadmap = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={roadmapBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

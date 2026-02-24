@@ -3,6 +3,7 @@ import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Check, TrendingUp } from "lucide-react";
+import investmentBg from "@/assets/investment-bg.jpg";
 
 const fundData = [
   { name: "Technology", value: 70, color: "hsl(230, 80%, 65%)" },
@@ -29,7 +30,8 @@ const returnScenarios = [
 const Slide12Investment = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={investmentBg} alt="" className="absolute bottom-0 left-0 w-[350px] h-[350px] object-cover opacity-10 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
