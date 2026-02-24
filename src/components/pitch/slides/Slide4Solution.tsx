@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { Brain, Users, Briefcase, Home, Zap, BarChart3, Clock } from "lucide-react";
+import solutionBg from "@/assets/solution-bg.jpg";
 
 const pillars = [
   { icon: Brain, title: "AI Super Teacher", desc: "Adaptive learning engine that personalizes every lesson, test, and revision in real-time", color: "from-blue-500 to-cyan-400" },
@@ -18,7 +19,8 @@ const whyAI = [
 const Slide4Solution = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={solutionBg} alt="" className="absolute bottom-0 right-0 w-[350px] h-[350px] object-cover opacity-15 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

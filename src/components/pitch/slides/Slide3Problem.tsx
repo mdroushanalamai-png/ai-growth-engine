@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { BookX, UserX, Smartphone, GraduationCap, AlertTriangle, TrendingDown } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Cell, Tooltip } from "recharts";
+import problemBg from "@/assets/problem-bg.jpg";
 
 const problems = [
   {
@@ -45,7 +46,8 @@ const eduData = [
 const Slide3Problem = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={problemBg} alt="" className="absolute top-0 right-0 w-[400px] h-[400px] object-cover opacity-10 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

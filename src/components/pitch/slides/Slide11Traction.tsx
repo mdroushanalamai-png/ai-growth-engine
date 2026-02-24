@@ -3,6 +3,7 @@ import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { TrendingUp, Users, Video, ClipboardCheck, Globe, Zap, CheckCircle } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from "recharts";
+import tractionBg from "@/assets/traction-bg.jpg";
 
 const surveyData = [
   { city: "Tier 1", response: 92, fill: "hsl(217, 91%, 60%)" },
@@ -21,7 +22,8 @@ const milestones = [
 const Slide11Traction = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={tractionBg} alt="" className="absolute top-0 right-0 w-[350px] h-[350px] object-cover opacity-15 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

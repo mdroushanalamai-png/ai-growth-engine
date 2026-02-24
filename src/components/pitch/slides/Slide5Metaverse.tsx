@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { BookOpen, Users, ShoppingBag, Rocket } from "lucide-react";
+import metaverseBg from "@/assets/metaverse-bg.jpg";
 
 const realms = [
   { icon: BookOpen, title: "Learning Realm", desc: "AI tutoring, adaptive tests, smart notes, doubt resolution", angle: 0, color: "hsl(230, 80%, 65%)", metric: "3x retention" },
@@ -12,7 +13,8 @@ const realms = [
 const Slide5Metaverse = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={metaverseBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none rounded-3xl" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

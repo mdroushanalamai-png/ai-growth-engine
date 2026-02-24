@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, Tooltip } from "recharts";
+import marketBg from "@/assets/market-bg.jpg";
 
 const segments = [
   { label: "EdTech", value: "$12B", color: "hsl(230, 80%, 65%)", size: 280 },
@@ -20,7 +21,8 @@ const cagrData = [
 const Slide6Market = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={marketBg} alt="" className="absolute top-0 left-0 w-[300px] h-[300px] object-cover opacity-10 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
