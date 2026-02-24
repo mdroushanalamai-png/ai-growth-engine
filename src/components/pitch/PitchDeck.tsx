@@ -14,10 +14,11 @@ import Slide7Opportunity from "./slides/Slide7Opportunity";
 import Slide8GTM from "./slides/Slide8GTM";
 import Slide9Economics from "./slides/Slide9Economics";
 import Slide10Competition from "./slides/Slide10Competition";
-import Slide11Team from "./slides/Slide11Team";
-import Slide12Investment from "./slides/Slide12Investment";
-import Slide13Roadmap from "./slides/Slide13Roadmap";
-import Slide14CTA from "./slides/Slide14CTA";
+import Slide11Traction from "./slides/Slide11Traction";
+import Slide12Team from "./slides/Slide12Team";
+import Slide13Investment from "./slides/Slide12Investment";
+import Slide14Roadmap from "./slides/Slide13Roadmap";
+import Slide15CTA from "./slides/Slide14CTA";
 
 const slides = [
   { component: Slide1Hero, title: "Hero" },
@@ -30,10 +31,11 @@ const slides = [
   { component: Slide8GTM, title: "GTM" },
   { component: Slide9Economics, title: "Economics" },
   { component: Slide10Competition, title: "Competition" },
-  { component: Slide11Team, title: "Team" },
-  { component: Slide12Investment, title: "Investment" },
-  { component: Slide13Roadmap, title: "Roadmap" },
-  { component: Slide14CTA, title: "Contact" },
+  { component: Slide11Traction, title: "Traction" },
+  { component: Slide12Team, title: "Team" },
+  { component: Slide13Investment, title: "Investment" },
+  { component: Slide14Roadmap, title: "Roadmap" },
+  { component: Slide15CTA, title: "Contact" },
 ];
 
 const PitchDeck = () => {
