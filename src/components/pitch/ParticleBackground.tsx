@@ -7,6 +7,7 @@ interface Particle {
   vy: number;
   radius: number;
   opacity: number;
+  hue: number;
 }
 
 const ParticleBackground = () => {
@@ -20,8 +21,9 @@ const ParticleBackground = () => {
 
     let animationId: number;
     const particles: Particle[] = [];
-    const PARTICLE_COUNT = 80;
-    const CONNECTION_DIST = 150;
+    const PARTICLE_COUNT = 120;
+    const CONNECTION_DIST = 180;
+    const hues = [230, 260, 190, 280];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -34,10 +36,11 @@ const ParticleBackground = () => {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 0.5,
         opacity: Math.random() * 0.5 + 0.2,
+        hue: hues[Math.floor(Math.random() * hues.length)],
       });
     }
 
@@ -53,7 +56,7 @@ const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(230, 80%, 70%, ${p.opacity})`;
+        ctx.fillStyle = `hsla(${p.hue}, 80%, 70%, ${p.opacity})`;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -65,8 +68,8 @@ const ParticleBackground = () => {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(230, 80%, 65%, ${0.12 * (1 - dist / CONNECTION_DIST)})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = `hsla(${(p.hue + p2.hue) / 2}, 70%, 60%, ${0.1 * (1 - dist / CONNECTION_DIST)})`;
+            ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }

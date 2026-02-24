@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
+import techgramLogo from "@/assets/techgram-logo.png";
 
 interface SlideLayoutProps {
   children: ReactNode;
@@ -40,6 +41,12 @@ const SlideLayout = ({ children }: SlideLayoutProps) => {
       >
         <div className="w-full h-full relative overflow-hidden p-16">
           {children}
+          {/* Watermark logo */}
+          <img
+            src={techgramLogo}
+            alt="Techgram"
+            className="absolute bottom-6 right-6 w-10 h-10 opacity-20 pointer-events-none"
+          />
         </div>
       </div>
     </div>
