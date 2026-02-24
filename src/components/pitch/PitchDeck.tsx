@@ -2,7 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ParticleBackground from "./ParticleBackground";
 import { Progress } from "@/components/ui/progress";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid, Download } from "lucide-react";
+import { lazy, Suspense } from "react";
+
+const PdfExporter = lazy(() => import("./PdfExporter"));
 
 import Slide1Hero from "./slides/Slide1Hero";
 import Slide2Overview from "./slides/Slide2Overview";
@@ -44,6 +47,7 @@ const PitchDeck = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showGrid, setShowGrid] = useState(false);
   const [showControls, setShowControls] = useState(true);
+  const [showPdfExporter, setShowPdfExporter] = useState(false);
 
   const go = useCallback(
     (index: number) => {
@@ -218,7 +222,17 @@ const PitchDeck = () => {
         <button onClick={toggleFullscreen} className="p-2 rounded-full glass-card text-foreground hover:bg-muted/30 transition">
           {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
         </button>
+
+        <button onClick={() => setShowPdfExporter(true)} className="p-2 rounded-full glass-card text-foreground hover:bg-muted/30 transition" title="Export PDF">
+          <Download className="w-5 h-5" />
+        </button>
       </motion.div>
+
+      {showPdfExporter && (
+        <Suspense fallback={null}>
+          <PdfExporter onClose={() => setShowPdfExporter(false)} />
+        </Suspense>
+      )}
       </div>
     </div>
   );
