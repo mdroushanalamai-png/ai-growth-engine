@@ -3,6 +3,7 @@ import SlideLayout from "../SlideLayout";
 import { Plus, Star, Search } from "lucide-react";
 import aribaPhoto from "@/assets/ariba.jpg";
 import roushanPhoto from "@/assets/roushan.jpg";
+import teamBg from "@/assets/team-bg.jpg";
 
 const founders = [
   {
@@ -31,7 +32,8 @@ const keyHires = [
 const Slide12Team = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={teamBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

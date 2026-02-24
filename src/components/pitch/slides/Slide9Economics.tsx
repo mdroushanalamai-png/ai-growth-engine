@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, PieChart, Pie, Cell, Tooltip, LineChart, Line, ComposedChart } from "recharts";
+import economicsBg from "@/assets/economics-bg.jpg";
 
 const revenueData = [
   { year: "Y1", revenue: 7.2, margin: 45 },
@@ -28,7 +29,8 @@ const unitEcon = [
 const Slide9Economics = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={economicsBg} alt="" className="absolute bottom-0 left-0 w-[350px] h-[350px] object-cover opacity-10 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

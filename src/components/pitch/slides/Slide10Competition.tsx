@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import { Check, X, Shield, Zap } from "lucide-react";
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from "recharts";
+import competitionBg from "@/assets/competition-bg.jpg";
 
 const features = [
   "AI Personalization",
@@ -40,7 +41,8 @@ const radarData = [
 const Slide10Competition = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={competitionBg} alt="" className="absolute top-0 right-0 w-[300px] h-[300px] object-cover opacity-15 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
