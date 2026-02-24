@@ -156,22 +156,24 @@ const PitchDeck = () => {
         />
       </div>
 
-      {/* Slide area */}
-      <div className="absolute inset-0 z-10">
-        <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
-            key={current}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute inset-0"
-          >
-            <SlideComponent />
-          </motion.div>
-        </AnimatePresence>
+      {/* Slide area - 16:9 letterboxed */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <div className="relative w-full h-full" style={{ maxWidth: 'calc(100vh * 16 / 9)', maxHeight: 'calc(100vw * 9 / 16)' }}>
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute inset-0"
+            >
+              <SlideComponent />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Controls */}
