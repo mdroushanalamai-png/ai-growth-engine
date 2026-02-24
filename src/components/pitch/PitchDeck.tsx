@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import ParticleBackground from "./ParticleBackground";
 import { Progress } from "@/components/ui/progress";
 import { ChevronLeft, ChevronRight, Maximize, Minimize, Grid, Download } from "lucide-react";
+import { generatePitchDeckPdf } from "./generatePdf";
 
 import Slide1Hero from "./slides/Slide1Hero";
 import Slide2Overview from "./slides/Slide2Overview";
@@ -220,9 +221,9 @@ const PitchDeck = () => {
         </button>
 
         <button
-          onClick={() => window.open("/print", "_blank")}
+          onClick={() => generatePitchDeckPdf()}
           className="p-2 rounded-full glass-card text-foreground hover:bg-muted/30 transition"
-          title="Export PDF"
+          title="Download PDF"
         >
           <Download className="w-5 h-5" />
         </button>
