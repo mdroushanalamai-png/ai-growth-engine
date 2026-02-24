@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { Rocket, Users, Building2, Globe, Crown } from "lucide-react";
+import gtmBg from "@/assets/gtm-bg.jpg";
 
 const phases = [
   { icon: Rocket, title: "Beta Launch", period: "Q1-Q2 2025", desc: "Core AI tutor MVP, early adopter testing" },
@@ -28,7 +29,8 @@ const funnelSteps = [
 const Slide8GTM = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={gtmBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10 pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

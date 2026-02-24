@@ -3,6 +3,7 @@ import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { Users, CreditCard, TrendingUp, Target } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, CartesianGrid, Tooltip } from "recharts";
+import overviewBg from "@/assets/overview-bg.jpg";
 
 const stats = [
   { icon: Users, label: "Target Students", value: 250, suffix: "M+", color: "from-blue-500 to-cyan-400" },
@@ -22,7 +23,8 @@ const userGrowthData = [
 const Slide2Overview = () => {
   return (
     <SlideLayout>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full relative">
+        <img src={overviewBg} alt="" className="absolute bottom-0 right-0 w-[400px] h-[400px] object-cover opacity-15 rounded-3xl pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
