@@ -145,20 +145,30 @@ const PitchDeck = () => {
   }
 
   return (
-    <div className="fixed inset-0 bg-background overflow-hidden">
-      <ParticleBackground />
+    <div className="fixed inset-0 bg-black overflow-hidden flex items-center justify-center">
+      {/* 16:9 viewport container */}
+      <div
+        className="relative bg-background overflow-hidden"
+        style={{
+          width: '100%',
+          height: '100%',
+          maxWidth: 'calc(100vh * 16 / 9)',
+          maxHeight: 'calc(100vw * 9 / 16)',
+          aspectRatio: '16 / 9',
+        }}
+      >
+        <ParticleBackground />
 
-      {/* Progress bar */}
-      <div className="absolute top-0 left-0 right-0 z-30">
-        <Progress
-          value={((current + 1) / slides.length) * 100}
-          className="h-1 rounded-none bg-muted/30"
-        />
-      </div>
+        {/* Progress bar */}
+        <div className="absolute top-0 left-0 right-0 z-30">
+          <Progress
+            value={((current + 1) / slides.length) * 100}
+            className="h-1 rounded-none bg-muted/30"
+          />
+        </div>
 
-      {/* Slide area - 16:9 letterboxed */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <div className="relative w-full h-full" style={{ maxWidth: 'calc(100vh * 16 / 9)', maxHeight: 'calc(100vw * 9 / 16)' }}>
+        {/* Slide area */}
+        <div className="absolute inset-0 z-10">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={current}
@@ -174,7 +184,6 @@ const PitchDeck = () => {
             </motion.div>
           </AnimatePresence>
         </div>
-      </div>
 
       {/* Controls */}
       <motion.div
@@ -210,6 +219,7 @@ const PitchDeck = () => {
           {isFullscreen ? <Minimize className="w-5 h-5" /> : <Maximize className="w-5 h-5" />}
         </button>
       </motion.div>
+      </div>
     </div>
   );
 };
