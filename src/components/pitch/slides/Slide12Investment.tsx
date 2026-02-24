@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import SlideLayout from "../SlideLayout";
 import AnimatedCounter from "../AnimatedCounter";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { Check, TrendingUp } from "lucide-react";
 
 const fundData = [
   { name: "Technology", value: 70, color: "hsl(230, 80%, 65%)" },
@@ -11,11 +12,18 @@ const fundData = [
 ];
 
 const milestones = [
-  "Launch MVP with 10K users",
-  "Achieve product-market fit",
-  "Sign 5 institutional partners",
+  "Launch MVP with 10K active users",
+  "Achieve product-market fit with 70%+ retention",
+  "Sign 5+ institutional partners (schools/coaching)",
   "Build core AI personalization engine",
-  "Prepare for Series A raise",
+  "Reach ₹7.2 Cr ARR run-rate",
+  "Prepare for Series A raise at 10x valuation",
+];
+
+const returnScenarios = [
+  { scenario: "Base", multiple: "10x", value: "₹8 Cr", timeline: "3 Years" },
+  { scenario: "Growth", multiple: "50x", value: "₹40 Cr", timeline: "5 Years" },
+  { scenario: "Moonshot", multiple: "100x", value: "₹80 Cr", timeline: "7 Years" },
 ];
 
 const Slide12Investment = () => {
@@ -27,28 +35,28 @@ const Slide12Investment = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-primary text-lg font-medium tracking-widest uppercase mb-2">Investment Ask</p>
-          <h2 className="text-5xl font-bold mb-2">
+          <p className="text-primary text-xl font-medium tracking-widest uppercase mb-2">Investment Ask</p>
+          <h2 className="text-6xl font-bold mb-2">
             Raising <span className="gradient-text">₹80 Lakhs</span> Seed Round
           </h2>
         </motion.div>
 
-        <div className="flex-1 flex items-center gap-12">
+        <div className="flex-1 flex items-center gap-10">
           {/* Pie chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="glass-card rounded-2xl p-8 w-[600px]"
+            className="glass-card rounded-2xl p-8 w-[550px]"
           >
-            <h3 className="text-2xl font-semibold mb-4 text-center">Use of Funds</h3>
-            <ResponsiveContainer width="100%" height={350}>
+            <h3 className="text-2xl font-bold mb-4 text-center">Use of Funds</h3>
+            <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
                   data={fundData}
                   cx="50%"
                   cy="50%"
-                  outerRadius={140}
+                  outerRadius={130}
                   paddingAngle={3}
                   dataKey="value"
                   label={({ name, value }) => `${name} ${value}%`}
@@ -62,49 +70,80 @@ const Slide12Investment = () => {
             <div className="grid grid-cols-2 gap-3 mt-4">
               {fundData.map((d) => (
                 <div key={d.name} className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full" style={{ background: d.color }} />
-                  <span className="text-sm text-muted-foreground">{d.name} — {d.value}%</span>
+                  <div className="w-4 h-4 rounded-full" style={{ background: d.color }} />
+                  <span className="text-base text-muted-foreground font-medium">{d.name} — {d.value}%</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
           {/* Right column */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="flex-1 space-y-8"
-          >
+          <div className="flex-1 space-y-6">
             {/* Amount */}
-            <div className="glass-card rounded-2xl p-8 glow-border text-center">
-              <p className="text-muted-foreground text-lg mb-2">Seed Round</p>
-              <p className="text-6xl font-bold gradient-text">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="glass-card rounded-2xl p-8 glow-border text-center"
+            >
+              <p className="text-muted-foreground text-xl mb-2">Seed Round</p>
+              <p className="text-7xl font-bold gradient-text stat-glow">
                 <AnimatedCounter target={80} prefix="₹" suffix=" Lakhs" duration={2000} />
               </p>
-            </div>
+            </motion.div>
+
+            {/* Return scenarios */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="glass-card rounded-2xl p-6"
+            >
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-primary" /> Return Scenarios
+              </h3>
+              <div className="flex gap-4">
+                {returnScenarios.map((r, i) => (
+                  <motion.div
+                    key={r.scenario}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + i * 0.1 }}
+                    className="flex-1 glass rounded-xl p-4 text-center"
+                  >
+                    <p className="text-sm text-muted-foreground">{r.scenario}</p>
+                    <p className="text-3xl font-bold gradient-text">{r.multiple}</p>
+                    <p className="text-base font-semibold">{r.value}</p>
+                    <p className="text-xs text-muted-foreground">{r.timeline}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* Milestones */}
-            <div className="glass-card rounded-2xl p-8">
-              <h3 className="text-xl font-semibold mb-4">Key Milestones</h3>
-              <div className="space-y-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="glass-card rounded-2xl p-6"
+            >
+              <h3 className="text-xl font-bold mb-3">Key Milestones</h3>
+              <div className="grid grid-cols-2 gap-2">
                 {milestones.map((m, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + i * 0.1 }}
-                    className="flex items-center gap-3"
+                    transition={{ delay: 1 + i * 0.08 }}
+                    className="flex items-center gap-2"
                   >
-                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
-                      <span className="text-xs text-primary font-bold">{i + 1}</span>
-                    </div>
-                    <span className="text-base text-muted-foreground">{m}</span>
+                    <Check className="w-5 h-5 text-emerald-400 shrink-0" />
+                    <span className="text-sm text-muted-foreground">{m}</span>
                   </motion.div>
                 ))}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </SlideLayout>
