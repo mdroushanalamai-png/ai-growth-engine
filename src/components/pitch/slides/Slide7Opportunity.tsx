@@ -41,7 +41,7 @@ const Slide7Opportunity = () => {
 
         <div className="flex-1 flex items-center gap-12">
           {/* Concentric circles */}
-          <div className="relative flex items-center justify-center shrink-0" style={{ width: 520, height: 520 }}>
+          <div className="relative flex items-center justify-center" style={{ width: 540, height: 540 }}>
             {circles.map((c, i) => (
               <motion.div
                 key={c.label}
@@ -49,24 +49,22 @@ const Slide7Opportunity = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.3 + i * 0.3, duration: 0.8, type: "spring" }}
                 className="absolute rounded-full flex flex-col items-center justify-center"
-                style={{
-                  width: c.size,
-                  height: c.size,
-                  background: c.color,
-                  border: `2px solid ${c.borderColor}`,
-                  left: '50%',
-                  top: '50%',
-                  marginLeft: -c.size / 2,
-                  marginTop: -c.size / 2,
-                }}
+                style={{ width: c.size, height: c.size, background: c.color, border: `2px solid ${c.borderColor}` }}
               >
-                <div className="text-center">
-                  <p className="text-2xl font-bold text-foreground">{c.label}</p>
-                  <p className="text-xl text-primary">{c.value}</p>
-                  <p className="text-sm text-muted-foreground">{c.desc}</p>
-                </div>
+                {i === circles.length - 1 && (
+                  <div className="text-center">
+                    <p className="text-2xl font-bold text-foreground">{c.label}</p>
+                    <p className="text-xl text-primary">{c.value}</p>
+                  </div>
+                )}
               </motion.div>
             ))}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="absolute -top-2 text-center">
+              <span className="text-xl font-bold text-foreground">TAM — $68B</span>
+            </motion.div>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }} className="absolute top-[80px] text-center">
+              <span className="text-xl font-bold text-foreground">SAM — 50-70M</span>
+            </motion.div>
           </div>
 
           <div className="flex-1 flex flex-col gap-6">
